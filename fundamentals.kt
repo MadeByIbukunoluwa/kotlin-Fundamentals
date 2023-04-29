@@ -178,6 +178,65 @@ fun main() {
     """.trimMargin()
     //The pipe hcaracter at the start of each kine prevents the stirng from having leading spaces
     print(bigString)
+
+    //Pairs and Triples 
+    // Sometimes data comes in groups e.g a pair of (x,y) coordinates on a 2d grid 
+    //SImlarly a set of coorodinates on a 3d grid is comprised of an xvalue a yvalue and a z value'
+    // in kotlin we can represent these types of data using a Pair or a Triple (other languages use a type called tuple)
+    // if you want to have more than three vaues you use what kotlin calls a data class 
+
+    val coordinates: Pair<Int, Int> = Pair(2,3)
+
+    // leveraging on type inference 
+    val cooridnatesInferred = Pair(2,3)
+
+    // we can even make this more concise using the to operator 
+    val coordinatesWithTo = 2 to 3 
+
+    //pair of doubles can be created to 
+    val coordinateDoubles = Pair(2.1,2.3)
+
+    // hw to acccess data inside a pair 
+    val x1 = coordinates.first
+    val y1 = coordinates.second
+
+    // you can also use a destructuring  decalration on individual parts fo the pair 
+
+    val (x,y) = coordinates 
+
+    println(x);
+    println(x1);
+    println(y);
+    println(y1);
+
+    //Triples 
+    val coordinates3D = Triple(1, 3, 5)
+
+    // destructuring declaration
+    val (x3, y3, z3) = coordinates3D
+
+    val x4 = coordinates3D.first
+    val y4 = coordinates3D.second
+    val z4 = coordinates3D.third
+
+    // if you want to ignore a certain element of a Pair or Triple, you can replace the space its uspposed to occupy (corresponding part of the variable in the declaration) with an underscore 
+    val(x5,y5, _) = coordinates3D
+
+    //Mini exercises
+    val DDmmYY = Triple(4,29,2023)
+
+    val month = DDmmYY.first
+    val day = DDmmYY.second 
+    val year = DDmmYY.third 
+
+    val (_,mth,yr) = DDmmYY
+
+    val monthModified = DDmmYY.first.toString();
+
+    val newPair = Pair(monthModified,year) 
+
+    //Number Types 
+
 } 
 //If we put it inside the main method or inside a class, it will give the error -  Modifier 'const' is not applicable to 'local variable'
 
