@@ -71,11 +71,11 @@ fun main() {
 
 // when you have data that might cange over time you declare it with a variale with var 
 
-    var variableNumber = 0
+    // var variableNumber = 0
 
 
-    variableNumber = 0
-    variableNumber = 1_000_000
+    // variableNumber = 0
+    // variableNumber = 1_000_000
 
     // increment and decrement
     var counter : Int = 0;
@@ -142,7 +142,42 @@ fun main() {
     //The integer literal does not conform to the expected type Doublekotlin(CONSTANT_EXPECTED_TYPE_MISMATCH)
     // var actuallyDouble : Double = 3 ;
 
-    
+    //Strings 
+    //At its base, a computer needs to be able to translate a character intot the computers language and it does so by assigning eacch character a different number .This forms a two way mapping form character to number called character set , the most standrad character set mapping today , is called Unicode 
+    // The number associated with each number is called a code point 
+    val characterA: Char = 'a';
+    val stringDog : String = "Dog";
+
+    //Concatenation
+    // you can concatenate strings with the addition operator or the addition assignment operator 
+    var message = "Hello " + "World "
+    val name = "hwywisung"  
+    message += name;
+    println(message);
+
+    //String templates 
+    val messageTemplate = "hello my name is $name"
+    println(messageTemplate)
+
+    val oneThird = 1.0 / 3.0
+
+    val oneThirdLogString = "one third is $oneThird as a decimal";
+
+    val oneThirdLogString1 = "one third is ${1.0 / 3.0} as a decimal"
+
+    // for the one thrid value, its result in the stirng temlate will be 0.33333333333333333, because it takes infinite characters to represent one third as a decimal , because it is a preating number 
+
+    // that one of the disadvantages of template strings, it offers no way to customize the output 
+
+    //Multi line Strings 
+    val bigString = """
+    | you cna have
+    | a string that
+    |contains multiple ines
+    |by doing this.
+    """.trimMargin()
+    //The pipe hcaracter at the start of each kine prevents the stirng from having leading spaces
+    print(bigString)
 } 
 //If we put it inside the main method or inside a class, it will give the error -  Modifier 'const' is not applicable to 'local variable'
 
@@ -157,11 +192,6 @@ var variableNumber : Int = 42 ;
 // You declare constants using val, while you declare variables using var 
 
 //once you have declared a variables , you can change it however you wish you simply reassign its value 
-
-
-variableNumber = 0
-
-variableNumber = 1_000_000
 
 // in kotlin, you can use underscores to amke larger numbers more human readable 
 
