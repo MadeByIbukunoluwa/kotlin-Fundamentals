@@ -236,8 +236,61 @@ fun main() {
     val newPair = Pair(monthModified,year) 
 
     //Number Types 
+    //primitives require less memory - they are better for performance , but they also lack some of the features of Integer , in Kotlin you don;t have to worry whether you are using a primitive type or an objct type, kotlin handles that complexity for you 
 
+    // You have been using double to represent fractional numbers, Kotlin offers a Float type that has lessr anrge and precision but occupies or has less sotrage size , regardless of that odern ahradware has been optimized for Doubles , so use doubles unless ypu have a good reason not to 
+
+    val a : Short = 12
+    val b : Byte = 120
+    val c : Int = -10000000
+
+    val answer = a + b + c 
+
+    //answer will be in Int 
+    println(answer)
+
+    //Any , Unit and Nothing Types 
+    // The nay type can be thought of as the mother of all types (except nullable types) any other type like Integer or String can still be considered as Any 
+    
+    //Unit is a special type that only ever represents one value called the unit , it is similar to the void type in java except it makes working with generics easier , every function which does not whihc does not epxlicitly return a type (for example String) returns Unit 
+
+    val anyNumber : Any = 42
+    val anyString :Any = "42"
+
+    fun add() {
+        val result = 2 + 2 
+        println(result)
+    }
+    // The return type UNit is imlied so the above function is the same as this 
+    fun add1():Unit {
+        val result = 2 + 2
+        println(result)
+    }
+    // Nothing is a type that is helpful for decalring that a function not only doesn't return anything but also never completes 
+    //Challenges 
+    val coordinatesS = Pair(2,3)
+
+    val row = coordinatesS.first
+    val column = coordinatesS.second 
+
+    //Basic Control Flow 
+    //Comparison Operators
+    val doesOneEqualTwo = (1 == 2)
+
+    val doesOneNotEqualTwo = (1 != 2)
+
+    // String equality
+    // you can compare strings for equality, and just as you can do with numbers, you can chck if one is lrager than the other 
+    val guess = "dog"
+    val dogEqualsCat = guess == "cat";
+    val order = "cat" < "dog"
+    println(guess)
+    println(dogEqualsCat) 
+    // we can encapsulate code with the use of braces 
+   
+    
 } 
+
 //If we put it inside the main method or inside a class, it will give the error -  Modifier 'const' is not applicable to 'local variable'
 
 
