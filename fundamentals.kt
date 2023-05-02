@@ -288,6 +288,36 @@ fun main() {
     println(dogEqualsCat) 
     // we can encapsulate code with the use of braces 
    
+    // Advanced Control Flow
+// Ranges
+// The range data type represents a sequence of countable integers
+    val closedRange = 0..5
+    // the .. signifes that the sequence is closed , means that the range goes from 0 to 5 inclusive
+
+    //Second theres a half open range 
+    val halfOpenRange = 0 until 5 
+    // the range goes from 0 to 4 
+
+    // theres a decreasing range 
+    val decreaasingRange = 5 downTo 0 
+
+    //for loops 
+    val count = 10 
+
+    var sum = 0 
+    for (i in 1..count) {
+        sum += 1 
+    }
+    //repeat loops 
+    // you can use it when you want ot loop a number of times and you don't want to use the loop constant at all
+    sum = 1
+    var lastSum = 0
+    repeat(10) { 
+        val temp = sum 
+        sum += lastSum
+        lastSum = temp
+    }
+    //Steps in loops 
     
 } 
 
