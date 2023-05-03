@@ -188,7 +188,7 @@ fun main() {
     val coordinates: Pair<Int, Int> = Pair(2,3)
 
     // leveraging on type inference 
-    val cooridnatesInferred = Pair(2,3)
+    val coordinatesInferred = Pair(2,3)
 
     // we can even make this more concise using the to operator 
     val coordinatesWithTo = 2 to 3 
@@ -215,9 +215,9 @@ fun main() {
     // destructuring declaration
     val (x3, y3, z3) = coordinates3D
 
-    val x4 = coordinates3D.first
-    val y4 = coordinates3D.second
-    val z4 = coordinates3D.third
+    val x6 = coordinates3D.first
+    val y6 = coordinates3D.second
+    val z6 = coordinates3D.third
 
     // if you want to ignore a certain element of a Pair or Triple, you can replace the space its uspposed to occupy (corresponding part of the variable in the declaration) with an underscore 
     val(x5,y5, _) = coordinates3D
@@ -306,21 +306,119 @@ fun main() {
 
     var sum = 0 
     for (i in 1..count) {
-        sum += 1 
+        sum += i
     }
     //repeat loops 
     // you can use it when you want ot loop a number of times and you don't want to use the loop constant at all
-    sum = 1
+    var sum1 = 1
     var lastSum = 0
     repeat(10) { 
-        val temp = sum 
-        sum += lastSum
+        val temp = sum1
+        sum1 += lastSum
         lastSum = temp
     }
     //Steps in loops 
-    
-} 
+    // it is also possible to perform certain iterations in tha range 
+    // the loop will only run through the values that the step falls on 
+    var sum2 = 0 
+    for (i in 1..count step 2 ) {
+        sum2 += i 
+        println(i)
+    }
+    var sum3 = 0;
+    for (i in count downTo 1 step 2 ) {
+        sum3 += i 
+        println(i) 
+        println("step2")
+    }
+    //labelled statements 
+    // you want to skip a loop itertion for a particular case without breaking out of the loop entirely , this can be done with the continue statement 
+    sum = 0 
+    rowLoop@ for (row in 0 until 8) {
+        columnLoop@ for (column in 0 until 8) {
+            if (row == column) {
+                continue@rowLoop
+            }
+           sum += row * column
+        }
+    }
+    //mini exercises
+    // When expressions
+    // You can also control flow via the when expression it executew d9fferent code depending on the value of a variable or constant 
+    val number1 = 10 
+    when (number1) {
+        0 -> println("Zero")
+        else -> println("Non-zero")
+    }
+    // to handle a specific case, you add the value followed by -> which indicates the code will execute if the condition is met 
+    when (number1) {
+        10 -> println("Its ten")
+    }
+    val string = "Dog"
+    when (string) {
+        "Cat","Dog" -> println("Animal is a house pet.")
+        else -> println("Animal is not a house pet.")
+    }
+    // You can also give your when expressions more than one branch , and because its an expression you can use it to return a value 
+    val numberName = when (number) {
+        2 -> "two"
+        4 -> "four"
+        6 -> "six"
+        8 -> "eight"
+        10 -> "ten"
+        else -> {
+            println("Unknown number")
+            "Unknown"
+        }
+    }
+    println(numberName)
+    // Advanced when expressions 
+    val hourOfDay = 12
+    val timeOfDay:String
 
+    timeOfDay = when(hourOfDay) {
+        0, 1, 2, 3, 4, 5 -> "Early morning"
+        6, 7, 8, 9 , 10 , 11 -> "Morning"
+        12, 13, 14, 15, 16 -> "Afternoon"
+        17, 18, 19 -> "Evening"
+        20, 21, 22, 23 -> "Late Evening"
+        else -> "INVALID HOUR!"
+    }
+    println(timeOfDay)
+    // Using expressions with ranges 
+    val hourOfDay1 = 7
+    val timeOfDay1 : String
+
+    timeOfDay1 = when(hourOfDay1) {
+        in 0..5 -> "Early Morning"
+        in 6..11 -> "Morning"
+        in 12..16 -> "Afternoon"
+        in 17..19 -> "Evening"
+        in 20..23 -> "Late Evening"
+        else -> "INVALID HOUR"
+    }
+// when there are multiple branches the expression will execute the first one that matches 
+// Using when expressions with conditions 
+ when {
+    number % 2 == 0 -> println("Even")
+    else -> println("Odd.")
+ }
+ // Another example of using conditions in when expressions 
+ val (x4, y4 , z4) = Triple(3,2,5)
+
+ when {
+    x4 == 0 && y4 == 0 && y4 == 0 -> println("Origin")
+    y4 == 0 && z4 == 0 -> println("On the x-axis at x = $x4")
+    x4 == 0 && y4 == 0 -> println("On the y-axis at y = $y4")
+    x4 == 0 && y4 == 0 -> println("On the z-axis at z = $z4")
+}
+when {
+    x4 == y4 -> println("Along th y = x line")
+    y4  == x4 * x4 -> println("Along the y = x^2 line")
+}
+//Mini exercises 
+//Challenges 
+}
 //If we put it inside the main method or inside a class, it will give the error -  Modifier 'const' is not applicable to 'local variable'
 
 
