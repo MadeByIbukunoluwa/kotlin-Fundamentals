@@ -418,7 +418,126 @@ when {
 }
 //Mini exercises 
 //Challenges 
+
+//Functions 
+ fun printMyName() {
+    println("My name is Joe Howard")
+ }
+ // function parameters
+ fun printMultipleOfFive(value:Int) {
+    println("$value * 5 = ${value * 5}")
+ }
+
+ printMultipleOfFive(10)
+
+ fun printMultipleOf(multiplier : Int, value:Int = 1) {
+    println("multiplier * $value = ${multiplier * value} ")
+ }
+printMultipleOf(4)
+
+// Return values
+fun multiply(number:Int, multiplier: Int):Int {
+    return number * multiplier
 }
+// This function returns both the product and quotient of the two parameters by returning a Pair containing two Int values 
+fun multiplyAndDivide(number:Int,factor:Int):Pair<Int,Int> {
+    return Pair(number * factor, number / factor)
+}
+val (product,quotient) = multiplyAndDivide(4,2)
+
+// If a function consists solely of a single exressio, you can assign the expression to the function using = while at the same time not using braces, a return type, or a return statement 
+fun multiplyInferred(number:Int, multiplier:Int) = number * multiplier;
+
+// function parameters are constants by default meaning they can't be modified , its equivalent to declaring the value parameter with val 
+
+// fun incrementAndPrint(value: Int) {
+//     value += 1
+//     print(value)
+// }
+// this results in an error - value cannot be reassigned 
+fun incrementAndPrint (value:Int):Int {
+    val newValue = value + 1 ;
+    println(newValue);
+    return newValue;
+}
+
+//Overloading lets you define similar functions with the same name
+// The return type alone is not enough for the compiler to dustinguish between two functions 
+// It is ususally achived thorugh a difference in parameter list - 
+// A different number of parameters 
+// Different parameter types 
+
+
+fun getValue(value:Int): Int {
+    return value + 1 
+}
+fun getValue(value:String):String {
+    return " The value is $value "
+}
+//declaring this one gives an error 
+// fun getValue(value:String):Int {
+//     return value.length
+// }
+// Mini exercises 
+
+fun printFullName(firstName:String,lastName:String) {
+    println("$firstName $lastName")
+}
+printFullName("Timothy","Blake")
+
+fun calculateFullName(firstName:String,lastName:String):String {
+    val fullName =  "$firstName $lastName"
+    return fullName
+}
+calculateFullName("rumuokoro","ojekwe")
+
+fun calculateFullName(fullName:String):Pair<String,Int> {
+    val fullName =  "$fullName"
+    val len = fullName.length
+    return Pair(fullName,len)
+}
+calculateFullName("ovwevwevwevwevwvwe")
+
+//Functions as variables 
+// functions in kotlin are simply another data type , you can asisgn them to variables 
+fun addInt(a:Int,b:Int):Int {
+    return a + b 
+}
+
+// You can assign the function to the variable using the method reference operator 
+var function = ::addInt 
+
+// here the name of the variable is function and its type is inferred as (Int,Int)-> Int
+// Now you canuse funciton just like you would use add
+function(4,2)
+
+fun subtract(a:Int,b:Int):Int {
+    return a - b 
+}
+// You can set the function variable from before to your new subtract function, because the parameter list and return type of subtract are compatible with the type of the function variable 
+function = ::subtract 
+
+function(4,2)
+
+//The fact that you can assign functions to functions come in handy because it means you can pass funcitons to other functions 
+// Its extremely useful to be able to pass functions to other functions it can help you write resuable code 
+//Assigning functions to varibales and p[assing function to other funcitons is one aspect of functional programming 
+
+fun printResult(function:(Int,Int) -> Int, a: Int, b: Int) {
+    val result = function(a,b)
+    print(result)
+}
+printResult(::addInt,4,2);
+
+//PrintResult calls the passed in function, passing into it the two Int parameters , then it prints the result to the console 
+
+// There are some functions that are designed to never evr return , this may sound odd, but an exmale can be a function deisgned to crash an application , for what reason you might ask? well ,consider a situation where an application is about to work with corrupt data , it is better to crahs the aplication tahn to let it continue in a dangerous and unknown state 
+
+
+//Challenges 
+
+}
+
 //If we put it inside the main method or inside a class, it will give the error -  Modifier 'const' is not applicable to 'local variable'
 
 
