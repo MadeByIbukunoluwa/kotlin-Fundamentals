@@ -508,7 +508,7 @@ fun addInt(a:Int,b:Int):Int {
 var function = ::addInt 
 
 // here the name of the variable is function and its type is inferred as (Int,Int)-> Int
-// Now you canuse funciton just like you would use add
+// Now you canuse function just like you would use add
 function(4,2)
 
 fun subtract(a:Int,b:Int):Int {
