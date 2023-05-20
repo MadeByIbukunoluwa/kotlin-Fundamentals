@@ -531,9 +531,6 @@ printResult(::addInt,4,2);
 
 //PrintResult calls the passed in function, passing into it the two Int parameters , then it prints the result to the console 
 
-// There are some functions that are designed to never evr return , this may sound odd, but an exmale can be a function deisgned to crash an application , for what reason you might ask? well ,consider a situation where an application is about to work with corrupt data , it is better to crahs the aplication tahn to let it continue in a dangerous and unknown state 
-
-
 //Challenges 
 
 }
@@ -553,5 +550,6 @@ var variableNumber : Int = 42 ;
 //once you have declared a variables , you can change it however you wish you simply reassign its value 
 
 // in kotlin, you can use underscores to amke larger numbers more human readable 
+
 
 

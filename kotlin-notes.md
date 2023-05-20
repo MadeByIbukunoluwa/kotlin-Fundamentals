@@ -1,4 +1,4 @@
-Kotlin
+# Kotlin
 
 Kotlin is a highly effective modern programming language developed by jetBrains
 
@@ -180,7 +180,8 @@ Using kotlin compiler
     message += name;
     println(message);
 
-    //String templates 
+## String templates
+
     val messageTemplate = "hello my name is $name"
     println(messageTemplate)
 
@@ -194,7 +195,8 @@ Using kotlin compiler
 
     // that one of the disadvantages of template strings, it offers no way to customize the output 
 
-    //Multi line Strings 
+## Multi line Strings
+
     val bigString = """
     | you cna have
     | a string that
@@ -204,7 +206,8 @@ Using kotlin compiler
     //The pipe hcaracter at the start of each kine prevents the stirng from having leading spaces
     print(bigString)
 
-    //Pairs and Triples 
+## Pairs and Triples
+
     // Sometimes data comes in groups e.g a pair of (x,y) coordinates on a 2d grid 
     //SImlarly a set of coorodinates on a 3d grid is comprised of an xvalue a yvalue and a z value'
     // in kotlin we can represent these types of data using a Pair or a Triple (other languages use a type called tuple)
@@ -234,7 +237,8 @@ Using kotlin compiler
     println(y);
     println(y1);
 
-    //Triples 
+## Triples
+
     val coordinates3D = Triple(1, 3, 5)
 
     // destructuring declaration
@@ -261,7 +265,8 @@ Using kotlin compiler
     //answer will be in Int 
     println(answer)
 
-    //Any , Unit and Nothing Types 
+## Any , Unit and Nothing Types
+
     // The any type can be thought of as the mother of all types (except nullable types) any other type like Integer or String can still be considered as Any 
     
     //Unit is a special type that only ever represents one value called the unit , it is similar to the void type in java except it makes working with generics easier , every function which does not whihc does not epxlicitly return a type (for example String) returns Unit 
@@ -278,4 +283,28 @@ Using kotlin compiler
         val result = 2 + 2
         println(result)
     }
-    // Nothing is a type that is helpful for decalring that a function not only doesn't return anything but also never completes 
+    // Nothing is a type that is helpful for declaring that a function not only doesn't return anything but also never completes 
+
+## dont confuse the terms "parameter" and "argument". A function declares its parameters in its parameter list. When you call a function you provide values as arguments for the functions parameters
+
+
+## functions
+
+### The land of no return
+
+ There are some functions that are designed to never evr return , this may sound odd, but an exmale can be a function designed to crash an application , for what reason you might ask? well ,consider a situation where an application is about to work with corrupt data , it is better to crash the aplication tahn to let it continue in a dangerous and unknown state
+
+ Another example of a non returning function is one which handles an event loop , it services requests frm the user , then passes these events to the application code , and that causes the information to be displayed on the screen. 
+ The loop then cycles back and services the next event 
+
+ Kotlin has a way of telling the compiler a function should never return - this is by setting the return type to Nothing 
+
+This can be a simple implementation of it -
+
+fun infiniteLoop(): Nothing {
+    while(true) {
+
+    }
+}
+
+
