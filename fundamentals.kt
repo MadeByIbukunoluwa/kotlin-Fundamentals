@@ -532,6 +532,39 @@ printResult(::addInt,4,2);
 //PrintResult calls the passed in function, passing into it the two Int parameters , then it prints the result to the console 
 
 //Challenges 
+// fun isNumberDivisible(number:Int, divisor:Int):Boolean {
+//     if (number % divisor == 0) return true 
+//     return false;
+// }
+
+// fun isPrime(number:Int):Boolean {
+//     if(number < 0 ) return false 
+
+// }
+
+// isPrime(6);
+// isPrime(13);
+// isPrime(8893); 
+
+//Recursive functions 
+fun fibonacci(number:Int):Int {
+    if (number < 0) return 0 
+    if (number == 1 || number == 2) return 1 
+    return fibonacci(number - 1) + fibonacci(number - 2 )
+}
+println(fibonacci(6))
+println(fibonacci(8))
+// memoized version 
+
+// Nullability 
+// nullable types allows you to represent not just a value but the absence of a value 
+// A valid value that can represent a special condition , such as the absence of a value is called a sentinel value 
+// Null is the name given to the absence of a value . A nullable value is allowed to hold either a value or null 
+
+//nullbale types introduce the ambiguity by using sentinel types 
+
+var errorCode:Int? 
+// Nullable types can never be inferred from initialization values 
 
 }
 
