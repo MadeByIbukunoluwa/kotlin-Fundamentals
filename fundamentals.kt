@@ -332,7 +332,7 @@ fun main() {
         println("step2")
     }
     //labelled statements 
-    // you want to skip a loop itertion for a particular case without breaking out of the loop entirely , this can be done with the continue statement 
+    // you want to skip a loop iteration for a particular case without breaking out of the loop entirely , this can be done with the continue statement 
     sum = 0 
     rowLoop@ for (row in 0 until 8) {
         columnLoop@ for (column in 0 until 8) {
@@ -565,6 +565,224 @@ println(fibonacci(8))
 
 var errorCode:Int? 
 // Nullable types can never be inferred from initialization values 
+ 
+// Mini exercises 
+
+var myFavoriteSong:String? = "in a sentimental mood"
+
+var myFavoriteSong1:String? = null;
+
+val parsedInt = "10".toIntOrNull();
+
+// It is a nullable because the string method tries to parse the string to a number into an integer , if it can't do so , it will return null
+
+var result1:Int? = 30 
+
+// since result1 is nullable , this would not work 
+
+// println(result1 + 1 );
+
+// we can use the not - null assertion operator , we want to look inside 'the box' and take the value , the result of the non null type 
+// the box here represnting the nullable box , that can hold a value
+
+var authorName:String? = "Joe Howard"
+var authorAge:Int? = 24 
+
+val ageAfterBirthday = authorAge!! + 1 
+
+println("After their next birthday, author will be $ageAfterBirthday")
+
+ authorAge = null;
+
+ // an exception will be thrown if we use the not null assertion operator on a variable that has no value 
+
+//  println("After two birthdays, author will be ${authorAge!! + 2}");
+
+// The null pointer exception occurs because the variable contains no value when you try to use it , alos you get this exception at runtime not at compile time 
+
+// SmartCasts 
+// Under certain conditions, you can check whether a nullbale has a value, and if so, you can use the variable as if it were not null using nullable checks in this type of way is an example of Kotlin smart casts 
+// if the nullable contains a value , the if expression executes the first block of code, in which kotlin will smart cast authorName to a regular non null string , if the nullable doesn't contain a value the the if expression executes the else block 
+// smart casts are much safer than non null assertions 
+// non null assertions are only best when a nullable is guaranteed to contain a value 
+
+var nonNullableAuthor:String
+var nullableAuthor:String?
+
+if (authorName != null) {
+    nonNullableAuthor = authorName
+} else {
+    nullableAuthor = authorName;
+}
+
+// mini exercises 
+if (myFavoriteSong != null) {
+    println(myFavoriteSong)
+} else {
+    println("I don't have a favorite song");
+}
+
+if (myFavoriteSong != null) {
+    myFavoriteSong = null;
+} else {
+    myFavoriteSong = "no favorite song"
+}
+
+// Safe calls 
+// We can use the the .? operator to safely access nullable values eg maybe we want to access the lenght of a nullable string , using smart csting will be overkill 
+
+var nameLength = authorName?.length;
+
+ var nameLengthPlusFive = nameLength?.plus(5);
+
+println("Authors name length plus 5 is $nameLengthPlusFive")
+
+// the let() ? function 
+// The safe call operator provides another way to use smart casts to work with the non null value inside a nullable, via the let() function form the standard library 
+
+authorName?.let {
+    nonNullableAuthor = authorName;
+}
+
+// Elvis operator 
+// Theres another way to get a value from a nullable , we can use the elvis operator , you ue it when you want to get the value out of the nullable no matter what - and in the case of null you will use a default value 
+
+var nullableInt:Int? = 10 
+// basically mustHaveResult would contain the value of nullableInt , but if the value is null , then make it zero 
+var mustHaveResult = nullableInt ?: 0 ;
+
+var nullableInt1:Int? = 10 
+
+// this is the less concise version 
+var mustHaveResult1 = if (nullableInt != null) nullableInt else 0 ;
+
+
+
+//Challenges 
+// var answer1 : Int = 0;
+
+// fun divideIfWhole(value:Int,divisor:Int) {
+//     // num / divisor == 0 - thats when the recursive function stops (base case)
+
+//     var quotient = value / divisor 
+
+//     if (quotient  ) {
+//         println("it divides $answer1 times");
+//     }
+//     else {
+//         answer1 += 1 
+//         println(answer1)
+//         divideIfWhole(quotient, divisor)
+//     }
+// }
+
+// divideIfWhole(100, 5);
+
+
+// Collection and lambdas 
+// Arrays and lists
+// easiest way to create an array in kotlin is by using the arrayOf() function 
+
+// Kotlin infers the type as Array<Int> 
+val evenNumbers = arrayOf(2,4,6,8)
+
+// it is alos possible to create an array with all of its values set to a default value 
+
+val fiveFives = Array(5, { 5 })
+
+// declare arrays that are not going to change as constants using val 
+
+val vowels = arrayOf("a","e","i","o","u")
+
+// creating arrays of primitive types 
+val oddNumbers = intArrayOf(1,3,5,7)
+
+val zeros = DoubleArray(4)
+
+//iterating over an array 
+
+for (arg in vowels) {
+    println(arg)
+}
+
+vowels.forEach {
+    arg -> println(arg)
+}
+
+//Lists
+// A type that is conceptually similar to an array is a list , arrays are usually more efficientin terms of raw performance , but lists have the additional feature of being dynamically sized 
+
+
+// The list type inferred here is List<String>
+// under the hood, the type being used to store innerPlanets is ArrayList 
+val innerPlanets = listOf("Mercury", "Venus", "Earth", "Mars")
+
+// we can explicitly declare the make an arrayList using arrayListOf 
+
+val innerPlanetsArrayList = arrayListOf("Mercury", "Venus", "Earth","Mars")
+
+// when creating empty lists ,you need to explicitly specify the type 
+// but note that the list returned from listOf is immutable, meaning you can't do anythng with it , to be able to change the list , we have to create a list using mutableListOf 
+
+val subscribers:List<String> = listOf()
+
+val subscribers1 = listOf<String>()
+
+// Mutable Lists 
+val outerPlanets = mutableListOf("Jupiter","Saturn","Uranus","Neptune")
+
+val exoPlanets = mutableListOf<String>()
+
+val players = mutableListOf("Alice","Bob","Cindy","Dan")
+
+print(players.isEmpty())
+
+if(players.size < 2 ) {
+    println("We need at least two players")
+} else {
+    println("Let's start")
+}
+
+// gets the first value in a list of throws an exception if empty 
+var currentPlayer = players.first()
+
+println(currentPlayer)
+
+// gets the last value in a list of throws an exception if empty
+var lastPlayer = players.last()
+
+// returns the element with the lowest value - not the lowets index! take note 
+// instead of throwing an exception , minOrNull returns a nullable type , so you need to check if the value returned is null
+
+val minPlayer = players.minOrNull()
+
+minPlayer.let {
+    println("$minPlayer will start")
+}
+
+// both methods will not return the same value 
+println(arrayOf(2 , 3 , 1).first())
+
+println(arrayOf(2,3,1).minOrNull())
+
+val maxPlayer = players.maxOrNull()
+
+if (maxPlayer != null) {
+    println("$maxPlayer is the MAX") 
+}
+
+// using indexing 
+val firstPlayer = players[0]
+println("first layer is $firstPlayer")
+
+// the indexing syntax is equivalent to using get() on the array or list and passing in the index as argument 
+
+val secondPlayer = players.get(1)
+
+// if you try to access an index that is out of bounds of the array you will get an exception 
+val player = players[4] 
+
+
 
 }
 
