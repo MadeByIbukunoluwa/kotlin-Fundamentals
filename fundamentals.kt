@@ -780,9 +780,50 @@ println("first layer is $firstPlayer")
 val secondPlayer = players.get(1)
 
 // if you try to access an index that is out of bounds of the array you will get an exception 
-val player = players[4] 
+// val player = players[4] 
 
+val upcomingPlayersSlice = players.slice(1..2)
 
+println(upcomingPlayersSlice.joinToString())
+
+//checking for an element 
+    fun isEliminated(player:String):Boolean {
+        return player !in players
+    }
+    println(isEliminated("Bob"));
+
+    // testing for the existenc of an element in a specific range 
+    players.slice(1..3).contains("Alice")
+
+    //modifying lists
+    //adding elements 
+    players.add("Ella")
+
+    players += "Joy"
+
+    println(players.joinToString())
+
+    // while arrays are of fixed size , you can use += operator on an array declared as var 
+    // but we are not appending to a new array , we are creating a new array thathas the additional element and assigning the new array to the variable 
+
+    var array3 = arrayOf(1,2,3)
+
+    array3 += 4 
+
+    println(array3.joinToString())
+
+    //inserting elements 
+    players.add(5,"Frank")
+
+    val wasPlayerRemoved = players.remove("Frank")
+    println("it is $wasPlayerRemoved that frank was removed")
+
+    val removedPlayer = players.removeAt(2)
+    println("$removedPlayer was removed")
+
+    // remove returns a boolean indicating whether a boolean was rmeoved from the list or not , removeAt returns the element that was removed from the list 
+
+    //mini exercise
 
 }
 
