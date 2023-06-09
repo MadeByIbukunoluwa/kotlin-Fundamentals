@@ -824,7 +824,48 @@ println(upcomingPlayersSlice.joinToString())
     // remove returns a boolean indicating whether a boolean was rmeoved from the list or not , removeAt returns the element that was removed from the list 
 
     //mini exercise
+    println(players.indexOf("Dan"))
 
+    //updating elements 
+    println(players.joinToString())
+
+
+    players[4] = "Franklin"
+
+    println(players.joinToString());
+
+    players[3] = "Anna"
+
+    players.sort()
+
+    println(players.joinToString())
+
+    // when updating elements the set method is equivalent to updating with bracket 
+
+    players.set(3, "bisi")
+
+    val scores = listOf(2, 2, 8, 6, 1)
+
+    for (players in players) {
+        println(players)
+    }
+
+    // if you need the index of each element you can iterate iver the return values of list's withIndex() emthod which can be destructed to the elements index and value 
+    for((index,player) in players.withIndex()) {
+        println("${index + 1}. $player")
+    }
+
+    fun sumOfElements(list:List<Int>):Int {
+        var sum = 0 
+        for (number in list) {
+            sum += number
+        }
+        return sum
+    }
+
+    print(sumOfElements(scores))
+
+    //mini exercise 
 }
 
 //If we put it inside the main method or inside a class, it will give the error -  Modifier 'const' is not applicable to 'local variable'
