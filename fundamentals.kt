@@ -1,7 +1,8 @@
-
+import java.util.random;
 // https://developer.android.com/courses/kotlin-bootcamp/overview
 //Kotlin Apprentice 
-import kotlin.math.* 
+import kotlin.math.*
+import kotlin.with 
 
 fun main() {
     println("Hello,World")
@@ -850,7 +851,7 @@ println(upcomingPlayersSlice.joinToString())
         println(players)
     }
 
-    // if you need the index of each element you can iterate iver the return values of list's withIndex() emthod which can be destructed to the elements index and value 
+    // if you need the index of each element you can iterate over the return values of list's withIndex() emthod which can be destructed to the elements index and value 
     for((index,player) in players.withIndex()) {
         println("${index + 1}. $player")
     }
@@ -863,9 +864,117 @@ println(upcomingPlayersSlice.joinToString())
         return sum
     }
 
-    print(sumOfElements(scores))
+    println(sumOfElements(scores)) 
 
     //mini exercise 
+    for ((index,player) in players.withIndex()) {   
+        println("${player}'s score is ${scores[index]}");
+    }
+    //Nullability and collection types 
+    // is the collection nullable? or are the elements nullable 
+    // here the list itself can be null
+    var nullableList:List<Int>? = listOf(1,2,3,4);
+
+    nullableList = null
+
+    // if you want to make the elements null 
+    var listOfNullables:List<Int?> = listOf(1,2,null,4);
+    // you cant set the list itself you will get an error 
+    // listOfNullables = null
+    // you can now let both the list and the elements be null
+    var nullableListOfNullables:List<Int?>? = listOf(1,2,null,4)
+
+    nullableListOfNullables = null;
+
+    //Challenges 
+    // val array1 = Array<Int>();
+    // val array2 = arrayOf();
+    val arrayThree:Array<String> = arrayOf();
+
+    var array4 = arrayOf(1,2,3);;
+
+    println(array4[0])
+    println(array4[5])
+    array4[0] = 4
+
+    val array5 = arrayOf(1,2,3)
+
+    array5[0] = array5[1]
+    // inferred type is Int so you can't assign an String
+    // array5[0] = "Six"
+    //val cannot be reassigned
+    // array5 += 6
+    // for item in array5 {println(item)}
+
+
+    // fun removeOne(item:Int, list:List<Int>):List<Int> {
+
+    // }
+    // fun remove(item:Int, list:List<Int>):List<Int> {
+
+    // }
+    // fun reverse(array:Array<Int>):Array<Int> {
+
+    // }
+    // val random = Random()
+
+    // fun rand(from:Int, to :Int):Int {
+    //     return random.nextInt(to - from) + from;
+    // }
+    // fun randomized(array:Array<Int>):Array<Int> {
+
+    // }
+    // fun minMax(numbers:Array<Int>):Pair<Int,Int>? {
+
+    // }
+    //Maps and sets 
+    var yearOfBirth = mapOf(
+        "Anna" to 1990,
+        "Brian" to 1991,
+        "Craig" to 1992,
+        "Donna" to 1993
+    )
+    var namesAndScores = mutableMapOf(
+        "Anna" to 2,
+        "Brian" to 2,
+        "Craig" to 8, 
+        "Donna" to 6
+    )
+    println(namesAndScores)
+    //we can create an empty map as so 
+
+    namesAndScores = mutableMapOf()
+
+    // we can also create a new Map by calling its constructor
+    var pairs = HashMap<String,Int>();
+
+    // when we create a map ,we can also define its capacity 
+    var pairs1 = HashMap<String,Int>(20)
+    
+    //Accessing values
+
+    println(namesAndScores["Anna"]) // > 2
+    println(namesAndScores["Greg"]) // null
+
+    //Using properties and methods 
+    println(namesAndScores.get("Craig"))
+
+    namesAndScores.isEmpty();
+    namesAndScores.size
+
+    //modifying mutable maps 
+    val bobData = mutableMapOf(
+        "name" to "Bob",
+        "Profession" to "CardPlayer",
+        "country" to "USA"
+    )
+    bobData.put("state","CA")
+
+    bobData["city"] = "San Francisco"
+
+    fun stateprint() {
+        
+    }
 }
 
 //If we put it inside the main method or inside a class, it will give the error -  Modifier 'const' is not applicable to 'local variable'
